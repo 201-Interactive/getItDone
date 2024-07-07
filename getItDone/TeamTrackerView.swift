@@ -60,11 +60,38 @@ struct TeamTrackerView: View {
                                 .foregroundStyle(Color.white)
                         }
                     }
-
-                    
                 } // list
                 
-                
+                VStack {
+                    Spacer()
+                    HStack (spacing: 50) {
+                        VStack (spacing: 10) {
+                            Text("Project timeline:")
+                            //.font(.custom("Georgia", fixedSize: 18))
+                            //.font(.system(size: 18))
+                                .italic()
+                            HStack {
+                                Text("42") // replace with struct/func that calculates number from start and end date
+                                    .fontWeight(.semibold)
+                                
+                                Text("days left")
+                            } // days left HStack
+                        } // VStack
+                        
+                        VStack(spacing: 10) {
+                            Text("Daily timeline:")
+                                .italic()
+                            HStack {
+                                Text("6") // replace with struct/func that calculates number from start and end date
+                                    .fontWeight(.semibold)
+                                
+                                Text("hours left")
+                            } // hours left HStack
+                            
+                        } // VStack
+                    } // Hstack
+                }
+                .padding(.bottom, 40)
             } // VStack
         }
         
