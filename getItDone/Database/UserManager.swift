@@ -9,13 +9,6 @@ import Foundation
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 
-struct TTUser: Codable {
-    let userId: String
-    let email : String?
-    let photoUrl: String?
-    let dateCreated: Date?
-}
-
 final class UserManager {
     
     private let userCollection: CollectionReference = Firestore.firestore().collection("users")
@@ -46,11 +39,6 @@ final class UserManager {
     }
     
     func getUser(userId: String) async throws -> TTUser {
-        try await userDocument(userId: userId).getDocument(as: TTUser.self)
-        
-
-        
+        return try await userDocument(userId: userId).getDocument(as: TTUser.self)
     }
-
-    
 }

@@ -24,23 +24,25 @@ struct ProfileView: View {
     @StateObject private var viewModel = ProfileViewModel()
     
     var body: some View {
-        Text("Hello world")
-        List {
-            if let user = viewModel.user {
-                Text("UserId: \(user.userId)")
-            Text("email: \(user.email ?? "no email broke ahh")")
-            Text("photo: \(user.photoUrl ?? "no PFP lookin ahh")")
-                Text("date created: \(user.dateCreated?.description ?? "how do you not have a create date??")")
+        NavigationStack {
+            ZStack {
+                List {
+                    if let user = viewModel.user {
+                        Text("UserId: \(user.userId)")
+                    Text("email: \(user.email ?? "no email broke ahh")")
+                    Text("photo: \(user.photoUrl ?? "no PFP lookin ahh")")
+                        Text("date created: \(user.dateCreated?.description ?? "how do you not have a create date??")")
 
 
+                    }
+                    
+                }
+                .task {
+                    try? await viewModel.loadCurrentUser()
+                }
             }
-            
+            .navigationTitle("Profile")
         }
-        .task {
-            try? await viewModel.loadCurrentUser()
-        }
-        .navigationTitle("Profile")
-
     }
 }
 
