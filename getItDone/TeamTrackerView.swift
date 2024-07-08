@@ -40,42 +40,11 @@ struct TeamTrackerView: View {
                         NameList(firstName: "Alex", lastName: "Badami", isDone: false)
                         NameList(firstName: "Joe", lastName: "Simeone", isDone: true)
                         NameList(firstName: "Eddie", lastName: "Trenk", isDone: false)
-                        NameList(firstName: "James", lastName: "Gallagher", isDone: false)
                         NameList(firstName: "Jack", lastName: "Quinn", isDone: true)
                     } header : {
                         Text("Group activity")
                     }
                 } // list
-//                VStack {
-//                    Spacer()
-//                    HStack (spacing: 50) {
-//                        VStack (spacing: 10) {
-//                            Text("Project timeline:")
-//                            //.font(.custom("Georgia", fixedSize: 18))
-//                            //.font(.system(size: 18))
-//                                .italic()
-//                            HStack {
-//                                Text("42") // replace with struct/func that calculates number from start and end date
-//                                    .fontWeight(.semibold)
-//                                
-//                                Text("days left")
-//                            } // days left HStack
-//                        } // VStack
-//                        
-//                        VStack(spacing: 10) {
-//                            Text("Daily timeline:")
-//                                .italic()
-//                            HStack {
-//                                Text("6") // replace with struct/func that calculates number from start and end date
-//                                    .fontWeight(.semibold)
-//                                
-//                                Text("hours left")
-//                            } // hours left HStack
-//                            
-//                        } // VStack
-//                    } // Hstack
-//                }
-//                .padding(.bottom, 40)
             } // VStack
         }
         .fullScreenCover(isPresented: $showSheet, content: {
@@ -96,43 +65,11 @@ struct TeamTrackerView: View {
         .navigationTitle("Group Name")
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
-                Button("\(Image(systemName: "chevron.down"))") {
-                }
-            }
-            
-        }
-
-            //.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-            //.padding()
-            
-//            .sheet(isPresented: $showSheet) {
-//                ZStack {
-//                    //Color.green
-//                        //.ignoresSafeArea()
-//                    .presentationDetents([.fraction(0.15), .large], selection: $detent)
-//                    
-//                    .presentationBackgroundInteraction(.enabled(upThrough: .fraction(0.15)))
-//                    .interactiveDismissDisabled()
-//                    
-//                    Divider()
-//                        .offset(y: 260)
-//
-//
-//                    if detent == .large {
-//                        FillBubbleView()
-//                        }
-//                } // sheet ZStack
-//            } // .sheet
-            
-//            .fullScreenCover(isPresented: $showBubble, content: {
-//                FillBubbleView()
-//            })
-//                        
-                             
-
+                Button("\(Image(systemName: "chevron.down"))") {} //TODO: make a dropdown list
+            } // ToolbarItem
+        } // tool bar
     } // var body some View
 } // GetItDoneView
-
 
 #Preview {
     NavigationStack {
@@ -154,15 +91,6 @@ struct NameList: View {
         }
     } // var icon name
     
-    var hasNotif: String {
-        if isDone {
-            return ""
-        }
-        else {
-            return "gear"
-        }
-    }
-    
     var nameColor: Color {
         if isDone {
             return Color.green
@@ -176,27 +104,16 @@ struct NameList: View {
         HStack {
             Text("\(firstName) \(lastName)")
             Spacer()
-            HStack {
-
-                if !isDone {
-                    Menu("\(Image(systemName: "bell"))") {
-                        Button("Poke", action: {})
-                        Button("Jab", action: {})
-                        Button("Punch", action: {})
-                    }
-                        .foregroundStyle(Color.blue)
-
-                } // if !isDone
-                else {
-                    Text("\(Image(systemName: "bell"))")
-                        .foregroundStyle(Color.gray)
-                        //.font(.system(size: CGFloat(textSize)))
+            if !isDone {
+                Menu("\(Image(systemName: "bell"))") {
+                    Button("Poke", action: {})
+                    Button("Jab", action: {})
+                    Button("Punch", action: {})
                 }
-                Image(systemName: "\(iconName)")
-                    .foregroundStyle(nameColor)
-            }
-        }
+                    .foregroundStyle(Color.blue)
+            } else {Image(systemName: "bell").foregroundStyle(Color.gray)}
+            Image(systemName: "\(iconName)").foregroundStyle(nameColor)
+        } // hstack
     } // var body
     
 } // struct view
-

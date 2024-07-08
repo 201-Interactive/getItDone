@@ -47,23 +47,49 @@ struct SettingsView: View {
     @StateObject private var viewModel = SettingsViewModel()
     @Binding var showSignInView: Bool
     
+    @State private var joinExpanded: Bool = false
+    
     var body: some View {
         List {
-            Button("Log out") {
-                Task {
-                    do {
-                        try viewModel.logOut()
-                        showSignInView = true
-                    } catch {
-                        print("Error: \(error.localizedDescription)")
+            Section {
+                Button("Log out") {
+                    Task {
+                        do {
+                            try viewModel.logOut()
+                            showSignInView = true
+                        } catch {
+                            print("Error: \(error.localizedDescription)")
+                        }
                     }
                 }
-            }
+                if viewModel.authProviders.contains(.email) {
+                    emailSection
+                }
+                // TODO: Add functions for email section defined in extension
+            } header: { Text("Log out") }
             
-            if viewModel.authProviders.contains(.email) {
-                emailSection
-            }
-            //Add functions for email section defined in extension
+        //––––––––––––––––––––––––if this page does work this is what I added———————————————–––––
+        //–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+            
+            Section {
+                DisclosureGroup( // TODO: this will not be a disclosure group
+                    isExpanded: $joinExpanded,
+                    content: {
+                        Text("scan qr code")
+                    },
+                    label: { Text("Scan QR Code  \(Image(systemName: "qrcode.viewfinder"))") }
+                )
+            } header: { Text("Join group") }
+
+            
+            Section {
+                ShareLink(item: URL(string: "https://www.godaddy.com/")!) {
+                    Text("Invite Others  \(Image(systemName: "square.and.arrow.up"))")
+                }
+            } header: { Text("Create New Group") } // header
+            
+        //––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––-–––
+        //––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––-–––
             
         }
         .onAppear {

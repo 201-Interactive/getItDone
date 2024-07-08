@@ -18,28 +18,20 @@ struct ContentView: View {
     
     @State private var showNavigationBar = false
     @Binding var showSignInView: Bool
-
     
     var body: some View {
 
         TabView(selection: $selectedTab) {
-            SettingsView(showSignInView: $showSignInView)
-                .tabItem {
-                    Label("Settings", systemImage: "gear")
-                }.tag(1)
-            HomeView()
-                .tabItem {
-                    Label("Home", systemImage: "house")
-                }.tag(2)
-            ProfileView()
-                .tabItem {
-                    Label("Profile", systemImage: "person.circle.fill")
-                }.tag(3)
             TeamTrackerView()
                 .tabItem {
                     Label("Team Tracker", systemImage: "list.clipboard")
-                }.tag(4)
+                }.tag(1)
+            SettingsView(showSignInView: $showSignInView)
+                .tabItem {
+                    Label("Settings", systemImage: "gear")
+                }.tag(2)
         } // end TabView
+// add to settings: profile, necessary home page componenets
 
     }
 }
