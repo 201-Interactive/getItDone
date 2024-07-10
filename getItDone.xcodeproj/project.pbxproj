@@ -15,8 +15,8 @@
 		B671C6F92C3B0E3C00F4AB14 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B671C6F82C3B0E3C00F4AB14 /* Activity.swift */; };
 		B689E1AF2BFFCEAE007A8007 /* TeamTrackerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B689E1AE2BFFCEAE007A8007 /* TeamTrackerView.swift */; };
 		B689E1B12C01023C007A8007 /* CreateGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B689E1B02C01023C007A8007 /* CreateGroupView.swift */; };
+		B69774502C3DFE340011836E /* NewGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B697744F2C3DFE340011836E /* NewGroupView.swift */; };
 		B6ACEA102C077029003F7EA6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6ACEA0F2C077029003F7EA6 /* ContentView.swift */; };
-		B6ACEA122C0968E3003F7EA6 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6ACEA112C0968E3003F7EA6 /* HomeView.swift */; };
 		B6F793922BBA096000903B51 /* getItDoneApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F793912BBA096000903B51 /* getItDoneApp.swift */; };
 		B6F793962BBA096100903B51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6F793952BBA096100903B51 /* Assets.xcassets */; };
 		B6F793992BBA096100903B51 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6F793982BBA096100903B51 /* Preview Assets.xcassets */; };
@@ -49,8 +49,8 @@
 		B671C6F82C3B0E3C00F4AB14 /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		B689E1AE2BFFCEAE007A8007 /* TeamTrackerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamTrackerView.swift; sourceTree = "<group>"; };
 		B689E1B02C01023C007A8007 /* CreateGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupView.swift; sourceTree = "<group>"; };
+		B697744F2C3DFE340011836E /* NewGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupView.swift; sourceTree = "<group>"; };
 		B6ACEA0F2C077029003F7EA6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		B6ACEA112C0968E3003F7EA6 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		B6F7938E2BBA096000903B51 /* getItDone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = getItDone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6F793912BBA096000903B51 /* getItDoneApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getItDoneApp.swift; sourceTree = "<group>"; };
 		B6F793952BBA096100903B51 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -140,7 +140,6 @@
 				B6F793952BBA096100903B51 /* Assets.xcassets */,
 				CA1248E12BC89C9D0082A05B /* RootView.swift */,
 				B689E1B02C01023C007A8007 /* CreateGroupView.swift */,
-				B6ACEA112C0968E3003F7EA6 /* HomeView.swift */,
 				B689E1AE2BFFCEAE007A8007 /* TeamTrackerView.swift */,
 				CA013F322BBCE7CE00EF1771 /* RegisterView.swift */,
 				B653ABC92C18F39D00B68A5C /* FillBubbleView.swift */,
@@ -148,6 +147,7 @@
 				B653ABCD2C1B8F1500B68A5C /* ProfileView.swift */,
 				CA1248DD2BC896750082A05B /* SignInEmailView.swift */,
 				CA1248E32BC89F190082A05B /* SettingsView.swift */,
+				B697744F2C3DFE340011836E /* NewGroupView.swift */,
 				B6ACEA0F2C077029003F7EA6 /* ContentView.swift */,
 				CA1248F02BC9F28C0082A05B /* SignInGoogleHelper.swift */,
 				CA1248F32BCA17650082A05B /* SignInAppleHelper.swift */,
@@ -277,7 +277,7 @@
 				CA013F332BBCE7CE00EF1771 /* RegisterView.swift in Sources */,
 				B671C6F72C3B0DD800F4AB14 /* TTUser.swift in Sources */,
 				CA1248EF2BC8C11C0082A05B /* Utilities.swift in Sources */,
-				B6ACEA122C0968E3003F7EA6 /* HomeView.swift in Sources */,
+				B69774502C3DFE340011836E /* NewGroupView.swift in Sources */,
 				B6F793922BBA096000903B51 /* getItDoneApp.swift in Sources */,
 				B689E1AF2BFFCEAE007A8007 /* TeamTrackerView.swift in Sources */,
 				CA1248F42BCA17650082A05B /* SignInAppleHelper.swift in Sources */,

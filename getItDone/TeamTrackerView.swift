@@ -14,67 +14,62 @@ struct TeamTrackerView: View {
     @State var iAmDone: Bool = false
     
     var body: some View {
-        ZStack {
-            Color.lightGray
-                .ignoresSafeArea()
-            VStack {
-                List {
-                    Section {
-                        HStack {
-                            Button(myName, action: {showSheet.toggle()})
-                            Spacer()
+        NavigationStack {
+            ZStack {
+                //            Color.lightGray
+                //                .ignoresSafeArea()
+                VStack {
+                    List {
+                        Section {
                             HStack {
-                                if iAmDone {
-                                    Image(systemName: "checkmark.circle")
-                                        .foregroundStyle(Color.green)
-                                } else {
-                                    Image(systemName: "xmark.circle")
-                                        .foregroundStyle(Color.red)
+                                Button(myName, action: {showSheet.toggle()})
+                                Spacer()
+                                HStack {
+                                    if iAmDone {
+                                        Image(systemName: "checkmark.circle")
+                                            .foregroundStyle(Color.green)
+                                    } else {
+                                        Image(systemName: "xmark.circle")
+                                            .foregroundStyle(Color.red)
+                                    }
                                 }
                             }
+                        } header: {
+                            Text("My activity")
                         }
-                    } header: {
-                        Text("My activity")
-                    }
-                    Section {
-                        NameList(firstName: "Alex", lastName: "Badami", isDone: false)
-                        NameList(firstName: "Joe", lastName: "Simeone", isDone: true)
-                        NameList(firstName: "Eddie", lastName: "Trenk", isDone: false)
-                        NameList(firstName: "Jack", lastName: "Quinn", isDone: true)
-                    } header : {
-                        Text("Group activity")
-                    }
-                } // list
-            } // VStack
-        }
-        .fullScreenCover(isPresented: $showSheet, content: {
-            ZStack {
-                FillBubbleView()
-                VStack {
-                    HStack {
-                        Spacer()
-                        Button("Done", action: {showSheet.toggle()})
-                        .padding(.trailing, 30)
-                        .fontWeight(.medium)
-
-                    }
-                    Spacer()
-                }
+                        Section {
+                            NameList(firstName: "Alex", lastName: "Badami", isDone: false)
+                            NameList(firstName: "Joe", lastName: "Simeone", isDone: true)
+                            NameList(firstName: "Eddie", lastName: "Trenk", isDone: false)
+                            NameList(firstName: "Jack", lastName: "Quinn", isDone: true)
+                        } header : {Text("Group activity")}
+                    } // list
+                } // VStack
             }
-        })
-        .navigationTitle("Group Name")
-        .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
-                Button("\(Image(systemName: "chevron.down"))") {} //TODO: make a dropdown list
-            } // ToolbarItem
-        } // tool bar
+            .fullScreenCover(isPresented: $showSheet, content: {
+                ZStack {
+                    FillBubbleView()
+                    VStack {
+                        HStack {
+                            Spacer()
+                            Button("Done", action: {showSheet.toggle()})
+                                .padding(.trailing, 30)
+                                .fontWeight(.medium)
+                            
+                        }
+                        Spacer()
+                    }
+                }
+            })
+            .navigationTitle("Group Name")
+            .navigationBarItems(trailing: Button("\(Image(systemName: "chevron.down"))") {})
+            //.navigationBarTitleDisplayMode(.inline)
+        }
     } // var body some View
 } // GetItDoneView
 
 #Preview {
-    NavigationStack {
-        TeamTrackerView()
-    }
+    TeamTrackerView()
 }
 
 struct NameList: View {

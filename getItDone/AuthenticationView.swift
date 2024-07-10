@@ -34,58 +34,60 @@ struct AuthenticationView: View {
     @Binding var showSignInView: Bool
     
     var body: some View {
-        
-        VStack {
-            NavigationLink {
-                SignInEmailView(showSignInView: $showSignInView)
-            } label: {
-                Text("Sign in with email")
-                    .foregroundStyle(.white)
-                    .font(.headline)
-                    .frame(height: 55)
-                    .frame(maxWidth: .infinity)
-                    .background(.blue)
-                    .clipShape(.buttonBorder)
-            }
-            
-            GoogleSignInButton(viewModel: GoogleSignInButtonViewModel(scheme: .dark, style: .wide, state: .normal)) {
-                Task {
-                    do {
-                        try await viewModel.signInGoogle()
-                        showSignInView = false
-                    } catch {
-                        print(error) //TODO: Custom
+        NavigationView {
+            VStack {
+                NavigationLink {
+                    SignInEmailView(showSignInView: $showSignInView)
+                } label: {
+                    Text("Sign in with email")
+                        .foregroundStyle(.white)
+                        .font(.headline)
+                        .frame(height: 55)
+                        .frame(maxWidth: .infinity)
+                        .background(.blue)
+                        .clipShape(.buttonBorder)
+                }
+                
+                GoogleSignInButton(viewModel: GoogleSignInButtonViewModel(scheme: .dark, style: .wide, state: .normal)) {
+                    Task {
+                        do {
+                            try await viewModel.signInGoogle()
+                            showSignInView = false
+                        } catch {
+                            print(error) //TODO: Custom
+                        }
                     }
                 }
-            }
-            
-            //MARK: Sign in with apple button
-            Button {
-                Task {
-                    do {
-                        try await viewModel.signInApple()
-                        showSignInView = false
-                    } catch {
-                        print(error)
+                
+                //MARK: Sign in with apple button
+                Button {
+                    Task {
+                        do {
+                            try await viewModel.signInApple()
+                            showSignInView = false
+                        } catch {
+                            print(error)
+                        }
                     }
+                } label: {
+                    SignInWithAppleButtonViewRepresentable(type: .default, style: .black)
+                        .allowsHitTesting(false) //fancy disabled
                 }
-            } label: {
-                SignInWithAppleButtonViewRepresentable(type: .default, style: .black)
-                    .allowsHitTesting(false) //fancy disabled
+                .frame(height: 55)
+                
+                Spacer()
             }
-            .frame(height: 55)
+            .padding()
+            .navigationTitle("Sign in")
+            // end vstack
             
-            Spacer()
         }
-        .padding()
-        .navigationTitle("Sign in")
-        // end vstack
-        
-    }
+    } // nav stack
+    //insert bracket in line above
 }
 
 #Preview {
-    NavigationStack {
-        AuthenticationView(showSignInView: .constant(false))
-    }
+//    NavigationStack {
+    AuthenticationView(showSignInView: .constant(false)) // if all goes to shit tab this + uncomment
+//    }
 }

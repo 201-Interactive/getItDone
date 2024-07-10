@@ -26,10 +26,14 @@ struct ContentView: View {
                 .tabItem {
                     Label("Team Tracker", systemImage: "list.clipboard")
                 }.tag(1)
-            SettingsView(showSignInView: $showSignInView)
+            NewGroupView()
                 .tabItem {
-                    Label("Settings", systemImage: "gear")
+                    Label("New Group", systemImage: "plus.circle")
                 }.tag(2)
+            ProfileView()
+                .tabItem {
+                    Label("Profile", systemImage: "person.circle")
+                }.tag(3)
         } // end TabView
 // add to settings: profile, necessary home page componenets
 
