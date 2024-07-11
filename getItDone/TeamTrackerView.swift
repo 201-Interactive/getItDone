@@ -13,38 +13,39 @@ struct TeamTrackerView: View {
     @State private var myName: String = "Jack Graziani"
     @State var iAmDone: Bool = false
     
+    @State private var groupSelection = "Group 1"
+    let myGroups = ["Group 1", "Group 2", "Group 3"]
+    
     var body: some View {
         NavigationStack {
             ZStack {
                 //            Color.lightGray
                 //                .ignoresSafeArea()
-                VStack {
-                    List {
-                        Section {
+                List {
+                    Section {
+                        HStack {
+                            Button(myName, action: {showSheet.toggle()})
+                            Spacer()
                             HStack {
-                                Button(myName, action: {showSheet.toggle()})
-                                Spacer()
-                                HStack {
-                                    if iAmDone {
-                                        Image(systemName: "checkmark.circle")
-                                            .foregroundStyle(Color.green)
-                                    } else {
-                                        Image(systemName: "xmark.circle")
-                                            .foregroundStyle(Color.red)
-                                    }
+                                if iAmDone {
+                                    Image(systemName: "checkmark.circle")
+                                        .foregroundStyle(Color.green)
+                                } else {
+                                    Image(systemName: "xmark.circle")
+                                        .foregroundStyle(Color.red)
                                 }
                             }
-                        } header: {
-                            Text("My activity")
                         }
-                        Section {
-                            NameList(firstName: "Alex", lastName: "Badami", isDone: false)
-                            NameList(firstName: "Joe", lastName: "Simeone", isDone: true)
-                            NameList(firstName: "Eddie", lastName: "Trenk", isDone: false)
-                            NameList(firstName: "Jack", lastName: "Quinn", isDone: true)
-                        } header : {Text("Group activity")}
-                    } // list
-                } // VStack
+                    } header: {
+                        Text("My activity")
+                    }
+                    Section {
+                        NameList(firstName: "Alex", lastName: "Badami", isDone: false)
+                        NameList(firstName: "Joe", lastName: "Simeone", isDone: true)
+                        NameList(firstName: "Eddie", lastName: "Trenk", isDone: false)
+                        NameList(firstName: "Jack", lastName: "Quinn", isDone: true)
+                    } header : {Text("Group activity")}
+                } // list
             }
             .fullScreenCover(isPresented: $showSheet, content: {
                 ZStack {
@@ -61,9 +62,17 @@ struct TeamTrackerView: View {
                     }
                 }
             })
-            .navigationTitle("Group Name")
-            .navigationBarItems(trailing: Button("\(Image(systemName: "chevron.down"))") {})
-            //.navigationBarTitleDisplayMode(.inline)
+            .navigationTitle("\(groupSelection)")
+            
+            .navigationBarItems(trailing: 
+                
+                Picker("\(Image(systemName: "plus"))",
+                    selection: $groupSelection,
+                    content: {
+                    ForEach(myGroups, id: \.self) {Text($0)}
+                })
+                    .pickerStyle(MenuPickerStyle())
+            ) // navbaritems(trailing
         }
     } // var body some View
 } // GetItDoneView

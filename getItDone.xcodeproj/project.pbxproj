@@ -16,6 +16,7 @@
 		B689E1AF2BFFCEAE007A8007 /* TeamTrackerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B689E1AE2BFFCEAE007A8007 /* TeamTrackerView.swift */; };
 		B689E1B12C01023C007A8007 /* CreateGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B689E1B02C01023C007A8007 /* CreateGroupView.swift */; };
 		B69774502C3DFE340011836E /* NewGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B697744F2C3DFE340011836E /* NewGroupView.swift */; };
+		B69774522C3F22250011836E /* PlusTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69774512C3F22250011836E /* PlusTitle.swift */; };
 		B6ACEA102C077029003F7EA6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6ACEA0F2C077029003F7EA6 /* ContentView.swift */; };
 		B6F793922BBA096000903B51 /* getItDoneApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F793912BBA096000903B51 /* getItDoneApp.swift */; };
 		B6F793962BBA096100903B51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6F793952BBA096100903B51 /* Assets.xcassets */; };
@@ -50,6 +51,7 @@
 		B689E1AE2BFFCEAE007A8007 /* TeamTrackerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamTrackerView.swift; sourceTree = "<group>"; };
 		B689E1B02C01023C007A8007 /* CreateGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupView.swift; sourceTree = "<group>"; };
 		B697744F2C3DFE340011836E /* NewGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupView.swift; sourceTree = "<group>"; };
+		B69774512C3F22250011836E /* PlusTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusTitle.swift; sourceTree = "<group>"; };
 		B6ACEA0F2C077029003F7EA6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		B6F7938E2BBA096000903B51 /* getItDone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = getItDone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6F793912BBA096000903B51 /* getItDoneApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getItDoneApp.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				CA1248E12BC89C9D0082A05B /* RootView.swift */,
 				B689E1B02C01023C007A8007 /* CreateGroupView.swift */,
 				B689E1AE2BFFCEAE007A8007 /* TeamTrackerView.swift */,
+				B69774512C3F22250011836E /* PlusTitle.swift */,
 				CA013F322BBCE7CE00EF1771 /* RegisterView.swift */,
 				B653ABC92C18F39D00B68A5C /* FillBubbleView.swift */,
 				CA1248DB2BC895390082A05B /* AuthenticationView.swift */,
@@ -279,6 +282,7 @@
 				CA1248EF2BC8C11C0082A05B /* Utilities.swift in Sources */,
 				B69774502C3DFE340011836E /* NewGroupView.swift in Sources */,
 				B6F793922BBA096000903B51 /* getItDoneApp.swift in Sources */,
+				B69774522C3F22250011836E /* PlusTitle.swift in Sources */,
 				B689E1AF2BFFCEAE007A8007 /* TeamTrackerView.swift in Sources */,
 				CA1248F42BCA17650082A05B /* SignInAppleHelper.swift in Sources */,
 				B689E1B12C01023C007A8007 /* CreateGroupView.swift in Sources */,
