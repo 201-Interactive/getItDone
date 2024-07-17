@@ -14,6 +14,7 @@ struct TeamTrackerView: View {
     @State var iAmDone: Bool = false
     
     @State private var groupSelection = "Group 1"
+    
     let myGroups = ["Group 1", "Group 2", "Group 3"]
     
     var body: some View {
@@ -71,7 +72,7 @@ struct TeamTrackerView: View {
                     content: {
                     ForEach(myGroups, id: \.self) {Text($0)}
                 })
-                    .pickerStyle(MenuPickerStyle())
+                    .pickerStyle(.menu)
             ) // navbaritems(trailing
         }
     } // var body some View
