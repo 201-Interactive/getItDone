@@ -13,67 +13,83 @@ struct TeamTrackerView: View {
     @State private var myName: String = "Jack Graziani"
     @State var iAmDone: Bool = false
     
-    @State private var groupSelection = "Group 1"
+//    @State private var groupSelection: String = "fake ahh group"
     
-    let myGroups = ["Group 1", "Group 2", "Group 3"]
+    let myGroups: [String] = ["XC Summer 2024", "Group 2", "Group 3"]
+    
+    @State private var groupSelection: String = "myGroups[0]"
     
     var body: some View {
         NavigationStack {
-            ZStack {
-                //            Color.lightGray
-                //                .ignoresSafeArea()
-                List {
-                    Section {
+            List {
+                Section {
+                    HStack {
+                        Button(myName, action: {showSheet.toggle()})
+                        Spacer()
                         HStack {
-                            Button(myName, action: {showSheet.toggle()})
-                            Spacer()
-                            HStack {
-                                if iAmDone {
-                                    Image(systemName: "checkmark.circle")
-                                        .foregroundStyle(Color.green)
-                                } else {
-                                    Image(systemName: "xmark.circle")
-                                        .foregroundStyle(Color.red)
-                                }
+                            if iAmDone {
+                                Image(systemName: "checkmark.circle")
+                                    .foregroundStyle(Color.green)
+                            } else {
+                                Image(systemName: "xmark.circle")
+                                    .foregroundStyle(Color.red)
                             }
                         }
-                    } header: {
-                        Text("My activity")
                     }
-                    Section {
-                        NameList(firstName: "Alex", lastName: "Badami", isDone: false)
-                        NameList(firstName: "Joe", lastName: "Simeone", isDone: true)
-                        NameList(firstName: "Eddie", lastName: "Trenk", isDone: false)
-                        NameList(firstName: "Jack", lastName: "Quinn", isDone: true)
-                    } header : {Text("Group activity")}
-                } // list
-            }
+                } header: {
+                    Text("My activity")
+                }
+                Section {
+                    NameList(name: "Alex Badami", isDone: false)
+                    NameList(name: "Joe Simp", isDone: true)
+                    NameList(name: "Eddie Truck", isDone: false)
+                    NameList(name: "Jack Quinnathon", isDone: true)
+
+                } header : {Text("Group activity")}
+            } // list
             .fullScreenCover(isPresented: $showSheet, content: {
                 ZStack {
-                    FillBubbleView()
-                    VStack {
-                        HStack {
-                            Spacer()
-                            Button("Done", action: {showSheet.toggle()})
-                                .padding(.trailing, 30)
-                                .fontWeight(.medium)
-                            
-                        }
-                        Spacer()
+                    NavigationStack {
+                        FillBubbleView()
+                            .toolbar {
+                                Button("Done", action: {showSheet.toggle()})
+                                    .fontWeight(.medium)
+                                
+                        //TODO: using toolbar / nav stack = messes up fillbubbleview
+                                //i think there's a more offical way to do this?? because it's a toolbar
+                            }
                     }
                 }
             })
             .navigationTitle("\(groupSelection)")
             
-            .navigationBarItems(trailing: 
-                
-                Picker("\(Image(systemName: "plus"))",
-                    selection: $groupSelection,
-                    content: {
-                    ForEach(myGroups, id: \.self) {Text($0)}
-                })
-                    .pickerStyle(.menu)
-            ) // navbaritems(trailing
+//            .toolbar {
+//                Picker(
+//                    selection: $groupSelection,
+//                    label: Text("filter"),
+//                    content: {
+//                        ForEach(myGroups, id: \.self) { option in
+//                            Text(option)
+//                                .tag(option)
+//                        }
+//                    })
+//                .pickerStyle(MenuPickerStyle())
+//            }
+            .toolbar {
+                Menu {
+                    Picker(selection: $groupSelection, label: Text("")) {
+                        ForEach(myGroups, id: \.self) { group in
+                            Text(group)
+                        }
+                    }
+                    .labelsHidden()
+                    .pickerStyle(InlinePickerStyle())
+                } label: {
+                    HStack {
+                        Text("\(Image(systemName: "plus"))")
+                    }
+                }
+            }
         }
     } // var body some View
 } // GetItDoneView
@@ -83,8 +99,7 @@ struct TeamTrackerView: View {
 }
 
 struct NameList: View {
-    let firstName: String
-    let lastName: String
+    let name: String
     let isDone: Bool
     
     var iconName: String {
@@ -107,7 +122,7 @@ struct NameList: View {
     
     var body: some View {
         HStack {
-            Text("\(firstName) \(lastName)")
+            Text("\(name)")
             Spacer()
             if !isDone {
                 Menu("\(Image(systemName: "bell"))") {

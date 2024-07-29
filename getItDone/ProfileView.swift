@@ -57,14 +57,13 @@ struct ProfileView: View {
                 }
             }
             .navigationTitle("Profile")
-            .navigationBarItems(trailing: Button("\(Image(systemName: "gear"))") {})
-            // TODO: lead this splish to settings view
+            
+            .navigationBarItems(trailing: NavigationLink(destination: SettingsView(showSignInView: .constant(false))) { Image(systemName: "gear") })
+
         }
     }
 }
 
 #Preview {
-    NavigationStack {
-        ProfileView()
-    }
+    ProfileView()
 }

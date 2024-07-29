@@ -14,6 +14,15 @@ struct Activity: Codable {
     let notificationsEnabled: Bool?
     let creationDate: Date
     
+    init(name: String, isDone: Bool, userId: String, notificationsEnabled: Bool? = nil, creationDate: Date) {
+        self.name = name
+        self.isDone = isDone
+        self.userId = userId
+        self.notificationsEnabled = notificationsEnabled
+        self.creationDate = creationDate
+
+    }
+    
     enum CodingKeys: String, CodingKey {
         case name = "name"
         case isDone = "complete"

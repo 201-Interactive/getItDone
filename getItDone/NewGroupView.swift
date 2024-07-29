@@ -11,6 +11,10 @@ struct NewGroupView: View {
     
     @State private var joinExpanded: Bool = false
     
+    @State private var showGroupSheet = false
+
+    @State private var isShareLinkPresented = false
+    
     var body: some View {
         NavigationStack {
             List {
@@ -25,14 +29,30 @@ struct NewGroupView: View {
                 } header: { Text("Join group") }
 
                 Section {
-                    ShareLink(item: URL(string: "https://www.godaddy.com/")!) {
-                        Text("Invite Others  \(Image(systemName: "square.and.arrow.up"))")
+                    ZStack {
+                        Button("Create New Group  \(Image(systemName: "plus.circle"))", action: {showGroupSheet.toggle()})
+                        //TODO: link does not work!
                     }
                 } header: { Text("Create New Group") } // header
             } //list
             .navigationTitle("New Group")
             //.navigationBarTitleDisplayMode(.inline)
         } // nav stack
+        .fullScreenCover(isPresented: $showGroupSheet, content: {
+            ZStack {
+                NavigationStack {
+                    CreateGroupView()
+                        .toolbar {
+                            ToolbarItem(placement: .topBarLeading) {
+                                Button("Cancel", action: {showGroupSheet.toggle()})
+                            }
+                            
+                    //TODO: using toolbar / nav stack = messes up fillbubbleview
+                            //i think there's a more offical way to do this?? because it's a toolbar
+                        }
+                }
+            }
+        })
         
     }// var body some view
 }
